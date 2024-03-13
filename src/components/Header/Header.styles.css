@@ -1,0 +1,41 @@
+.header {
+  width: 100%;
+  padding: 40px 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.search {
+  padding: 16px 20px;
+  border: none;
+  border-radius: 10px;
+
+  flex: 1;
+
+  color: rgb(128, 133, 139);
+  font-family: 'Exo 2';
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0%;
+  text-align: left;
+
+  background: rgb(50, 53, 55);
+}
+
+.search::placeholder{
+  color: rgb(128, 133, 139);
+  font-family: 'Exo 2';
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0%;
+  text-align: left;
+}

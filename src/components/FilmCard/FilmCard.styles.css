@@ -1,0 +1,28 @@
+.film-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.film-poster {
+    max-width: 266px;
+    margin-bottom: 24px;
+
+    border-radius: 20px;
+}
+
+.title {
+    margin-bottom: 16px;
+
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+.genre {
+    color: rgb(175, 178, 182);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+}

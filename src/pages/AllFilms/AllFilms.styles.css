@@ -1,0 +1,23 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container__all-films {
+  padding: 134px 0;
+
+  display: flex;
+  flex: 1;
+}
+
+.all-films {
+  width: 100%;
+  max-width: 1920px;
+  flex-grow: 1;
+
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(auto-fill);
+  gap: 40px;
+}

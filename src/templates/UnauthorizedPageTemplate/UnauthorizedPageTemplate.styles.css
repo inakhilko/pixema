@@ -1,0 +1,14 @@
+.unauth-page-template {
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 136px;
+
+  display: flex;
+  flex-direction: column;
+
+  background-image: url('../../assets/images/unauth-background.png');
+}
+
+.unauth-page-template__content {
+  flex: 1;
+}
