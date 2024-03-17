@@ -1,9 +1,25 @@
-.black-btn {
-    color: #fff;
+.button {
+  padding: 16px;
 
-    background: #323537FF;
+  border: none;
+  border-radius: 10px;
+
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+
+  background: #323537ff;
+  cursor: pointer;
 }
 
-.black-btn:hover {
-    background: #323537FF;
+.button:hover {
+  background: #323537ff;
+}
+
+.submit-btn {
+  background: #7b61ffff;
+}
+
+.submit-btn:hover {
+  background: #917cffff;
 }

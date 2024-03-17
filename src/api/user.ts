@@ -1,30 +1,16 @@
-// import { IUser, LoginCredentialsType } from '../types';
 import axios from 'axios';
-import { redirect } from 'react-router-dom';
-// import fetchWithTokens from '../utils/fetchWithTokens';
-export const APP_STORAGE_KEYS = {
-  USER: 'blogUser',
-  TOKENS: 'blogTokens',
-};
-// 'https://studapi.teachmeskills.by/activate/:uid/:token',
+import { IUser, LoginCredentialsType } from '../types';
+import { SignUpFormFieldsType } from '../types/formsData';
+import api, { APP_STORAGE_KEYS } from './index';
 
 class UserServiceApi {
   public static async registerUser({
-    username, email, password, confirmationPassword,
-  }) {
-    const response = await fetch(
+    username, email, password,
+  }:SignUpFormFieldsType) {
+    await axios.post(
       'https://studapi.teachmeskills.by/auth/users/',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8',
-        },
-        body: JSON.stringify({ username, email, password }),
-      },
+      { username, email, password },
     );
-    const result: { refresh: string; access: string } = await response.json();
-    localStorage.setItem(APP_STORAGE_KEYS.TOKENS, JSON.stringify(result));
-    return result;
   }
 
   public static async activateUser({ uid, token }:Record<string, string>) {
@@ -33,47 +19,47 @@ class UserServiceApi {
         uid,
         token,
       });
-      return redirect('signin');
     } catch (error) {
-      return redirect('signin');
+      console.log(error);
     }
-
-    // const response = await fetch(
-    //     'https://studapi.teachmeskills.by/auth/users/',
-    //     {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json;charset=utf-8',
-    //         },
-    //         body: JSON.stringify({ username, email, password }),
-    //     },
-    // );
-    // const result: { refresh: string; access: string } = await response.json();
-    // localStorage.setItem(APP_STORAGE_KEYS.TOKENS, JSON.stringify(result));
-    // return result;
   }
 
-  // public static async signIn({ email, password }: LoginCredentialsType) {
-  //   const response = await fetch(
-  //     'https://studapi.teachmeskills.by/auth/jwt/create/',
-  //     {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json;charset=utf-8',
-  //       },
-  //       body: JSON.stringify({ email, password }),
-  //     },
-  //   );
-  //   const result: { refresh: string; access: string } = await response.json();
-  //   localStorage.setItem(APP_STORAGE_KEYS.TOKENS, JSON.stringify(result));
-  //   return result;
-  // }
-  //
-  // public static async getUser(): Promise<IUser | null> {
-  //   const response = await fetchWithTokens('https://studapi.teachmeskills.by/auth/users/me/');
-  //   return response.json();
-  // }
-  //
+  public static async signIn({ email, password }: LoginCredentialsType) {
+    const response = await axios.post(
+      'https://studapi.teachmeskills.by/auth/jwt/create/',
+      { email, password },
+    );
+    const result: { refresh: string; access: string } = await response.data;
+    localStorage.setItem(APP_STORAGE_KEYS.TOKENS, JSON.stringify(result));
+    return result;
+  }
+
+  public static async getUser(): Promise<IUser | null> {
+    const response = await api.get('https://studapi.teachmeskills.by/auth/users/me/');
+    return response.data;
+  }
+
+  public static async resetPassword({ email }: { email: string }) {
+    try {
+      await axios.post('https://studapi.teachmeskills.by/auth/users/reset_password/', {
+        email,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  public static async changePassword({ uid, token, newPassword: { password } }:{ uid: string | undefined, token: string | undefined, newPassword: { password: string } }) {
+    try {
+      await axios.post('https://studapi.teachmeskills.by/auth/users/reset_password_confirm/', {
+        uid,
+        token,
+        new_password: password,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
   // public static getLocalStorageData(key: string) {
   //   try {
   //     const data = localStorage.getItem(key);

@@ -1,14 +1,21 @@
-.unauth-page-template {
+.page-template {
   width: 100%;
   min-height: 100vh;
   padding-top: 136px;
 
   display: flex;
   flex-direction: column;
+}
 
+.page-template--unauthorized {
   background-image: url('../../assets/images/unauth-background.png');
 }
 
-.unauth-page-template__content {
+.page-template--authorized {
+  background-image: none;
+  background-color: #000;
+}
+
+.page-template__content {
   flex: 1;
 }

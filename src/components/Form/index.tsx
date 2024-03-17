@@ -1,19 +1,19 @@
-import { useForm } from 'react-hook-form';
-import Input from '../Input';
-import { IPageData } from '../../constants/forms';
-import './Form.style.css';
-import SubmitButton from '../SubmitButton';
 import { Link } from 'react-router-dom';
+import { FieldValues, useForm } from 'react-hook-form';
+import Input from '../Input';
+import './Form.style.css';
+import Button from '../Button';
+import { FormProps } from '../../types/formsData';
 
-type FormProps<T extends object> = {
-  formInfo: IPageData<T>;
-  onSubmit: (data: T) => void
-  staticMessage?: string,
-};
-
-function Form<T extends object>({
+function Form<T extends FieldValues>({
   formInfo: {
-    title, button, inputsData, linkInfo, defaultValues, getDynamicMessage,
+    title,
+    button,
+    inputsData,
+    linkInfo,
+    defaultValues,
+    getDynamicMessage,
+    resolver,
   },
   onSubmit,
   staticMessage,
@@ -23,33 +23,33 @@ function Form<T extends object>({
     handleSubmit,
     getValues,
     formState: { errors },
-  } = useForm({ defaultValues });
+  } = useForm({ defaultValues, resolver });
   const values = getValues();
-  const message = staticMessage || (getDynamicMessage?.(values, errors));
+  const message = staticMessage || getDynamicMessage?.(values, errors);
+
   return (
     <form className="form" onSubmit={handleSubmit(onSubmit)}>
       <h2 className="form__title">{title}</h2>
-      {staticMessage && <p className="form__message">{message}</p>}
+      {message && <p className="form__message">{message}</p>}
       <div className="form__wrapper">
         {inputsData.map(({
           label, inputName, placeholder, inputHelper,
         }) => (
-          <Input
+          <Input<T>
             label={label}
             placeholder={placeholder}
             key={inputName}
+            inputName={inputName}
             inputHelper={inputHelper}
-                // eslint-disable-next-line react/jsx-props-no-spreading
-            {...register(inputName)}
+            register={register}
+            type={inputName === 'password' || inputName === 'passwordConfirmation' ? 'password' : ''}
+            errorMessage={errors[inputName]?.message}
           />
 
         ))}
-        {/* {errors && ( */}
-        {/*   <p>{errors.messa}</p> */}
-        {/* )} */}
       </div>
 
-      <SubmitButton buttonText={button} />
+      <Button buttonText={button} type="submit" additionalClass="submit-btn" />
       {linkInfo && (
         <p className="form__helper">
           {linkInfo.helpingQuestion}
@@ -62,5 +62,9 @@ function Form<T extends object>({
     </form>
   );
 }
+
+Form.defaultProps = {
+  staticMessage: '',
+};
 
 export default Form;

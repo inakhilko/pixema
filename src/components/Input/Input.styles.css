@@ -44,3 +44,15 @@
   cursor: pointer;
   text-decoration: none;
 }
+
+.input__error-text {
+  margin-top: 4px;
+
+  color: #FF5154FF;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.error {
+  border: solid 2px #FF5154FF;
+}

@@ -1,9 +1,11 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import listenerMiddleware from './middleware';
 import filmsReducer from './slices/Films';
+import userReducer from './slices/User';
 
 const rootReducer = combineReducers({
   filmsStore: filmsReducer,
+  userStore: userReducer,
 });
 export const store = configureStore({
   reducer: rootReducer,

@@ -1,63 +1,34 @@
 import {
-  createBrowserRouter, createRoutesFromElements, Route, RouteObject,
+  createBrowserRouter, createRoutesFromElements, Route,
 } from 'react-router-dom';
-import Form from '../components/Form';
-import {
-  newPassPageData,
-  ResetPassPageData,
-  signInPageData,
-  signUpPageData,
-} from '../constants/forms';
-import UnauthorizedPageTemplate from '../templates/UnauthorizedPageTemplate';
-import Message from '../components/Message';
-import { registrationConfirmationMessage, successSignUpMessage } from '../constants/messages.ts';
 
-const AUTHORIZED_ROUTES: RouteObject[] = [
-  {
-    path: '/',
-    element: <UnauthorizedPageTemplate />,
-    children: [
-      {
-        path: 'signin',
-        element: <Form formInfo={signInPageData} />,
-      },
-      {
-        path: 'signup',
-        element: <Form formInfo={signUpPageData} />,
-      },
-      {
-        path: 'reset-password',
-        element: <Form formInfo={ResetPassPageData} />,
-      },
-      {
-        path: 'new-password',
-        element: <Form formInfo={newPassPageData} />,
-      },
-      {
-        path: 'confirmation',
-        element: <Message messageInfo={registrationConfirmationMessage} />,
-      },
-      {
-        path: 'success/:uid/:token',
-        element: <Message messageInfo={successSignUpMessage} />,
-      },
-    ],
-  },
-];
-const router = createBrowserRouter(AUTHORIZED_ROUTES);
-//     createRoutesFromElements(
-//   <Route
-//     element={<UnauthorizedPageTemplate />}
-//     path="/"
-//   >
-//     <Route element={<Form formInfo={signInPageData} />} path="signin" />
-//     <Route element={<Form formInfo={signUpPageData} />} path="signup" />
-//     <Route element={<Form formInfo={ResetPassPageData} />} path="reset-password" />
-//     <Route element={<Form formInfo={newPassPageData} />} path="new-password" />
-//     <Route element={<Message messageInfo={registrationConfirmationMessage} />} path="confirmation" />
-//     <Route element={<Message messageInfo={successSignUpMessage} />} path="success/:uid/:token" />
-//
-//   </Route>,
-// )
+import PageTemplate from '../templates/PageTemplate';
+import SignInPage from '../pages/SignInPage';
+import SignUpPage from '../pages/SignUpPage';
+import ResetPasswordPage from '../pages/ResetPasswordPage';
+import UserActivationPage from '../pages/UserActivationPage';
+import RegistrationConfirmationPage from '../pages/RegistrationConfimationPage';
+import NewPasswordPage from '../pages/NewPasswordPage';
+import AllFilms from '../pages/AllFilms';
+import PrivateRoute from './PrivateRoute';
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route
+      element={<PageTemplate />}
+      path="/"
+    >
+      <Route element={<SignInPage />} path="signin" />
+      <Route element={<SignUpPage />} path="signup" />
+      <Route element={<ResetPasswordPage />} path="reset-password" />
+      <Route element={<NewPasswordPage />} path="password/reset/confirm/:uid/:token" />
+
+      <Route element={<RegistrationConfirmationPage />} path="confirmation" />
+      <Route element={<UserActivationPage />} path="activate/:uid/:token" />
+      <Route element={<PrivateRoute Component={AllFilms} />} path="all" />
+
+    </Route>,
+  ),
+);
 
 export default router;

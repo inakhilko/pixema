@@ -1,30 +1,18 @@
-import { DefaultValues, FieldErrors, Path } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import {
+  newPassValidationSchema,
+  resetPassValidationSchema,
+  signInValidationSchema,
+  signUpValidationSchema,
+} from './validationSchemas';
+import {
+  IFormData, NewPasswordFormFieldsType,
+  ResetPasswordFormFieldsType,
+  SignInFormFieldsType,
+  SignUpFormFieldsType,
+} from '../types/formsData';
 
-export interface IPageData<T extends object> {
-  title: string,
-  button: string,
-  inputsData: {
-    label: string,
-    inputName: Path<T>,
-    placeholder: string
-    inputHelper?: {
-      helpingQuestion?: string,
-      path?: string
-    }
-  }[],
-  linkInfo?: {
-    helpingQuestion?: string,
-    link?: string,
-    path?: string
-  },
-  defaultValues: DefaultValues<T>,
-  getDynamicMessage?: (data: T, errors: FieldErrors<T>) => string
-}
-type SignInFormDataType = {
-  email: string,
-  password: string
-};
-export const signInPageData: IPageData<SignInFormDataType> = {
+export const signInFormData: IFormData<SignInFormFieldsType> = {
   title: 'Sign In',
   inputsData: [
     {
@@ -43,7 +31,6 @@ export const signInPageData: IPageData<SignInFormDataType> = {
     },
   ],
   button: 'Sign in',
-  message: 'Your password has been changed !',
   linkInfo: {
     helpingQuestion: 'Don’t have an account? ',
     link: 'Sign Up',
@@ -53,14 +40,16 @@ export const signInPageData: IPageData<SignInFormDataType> = {
     email: '',
     password: '',
   },
+  validationSchema: signInValidationSchema,
+  resolver: yupResolver(signInValidationSchema),
 };
 
-export const signUpPageData: IPageData = {
+export const signUpFormData: IFormData<SignUpFormFieldsType> = {
   title: 'Sign Up',
   inputsData: [
     {
       label: 'Name',
-      inputName: 'name',
+      inputName: 'username',
       placeholder: 'Your name',
     },
     {
@@ -85,12 +74,17 @@ export const signUpPageData: IPageData = {
     link: 'Sign In',
     path: 'signin',
   },
+  defaultValues: {
+    username: '',
+    email: '',
+    password: '',
+    passwordConfirmation: '',
+  },
+  validationSchema: signUpValidationSchema,
+  resolver: yupResolver(signUpValidationSchema),
 };
 
-type ResetPasswordFormType = {
-  email: string
-};
-export const ResetPassPageData: IPageData<ResetPasswordFormType> = {
+export const resetPasswordFormData: IFormData<ResetPasswordFormFieldsType> = {
   title: 'Reset password',
   inputsData: [
     {
@@ -104,9 +98,11 @@ export const ResetPassPageData: IPageData<ResetPasswordFormType> = {
     email: '',
   },
   getDynamicMessage: (data, errors) => (!errors.email ? `You will receive an email ${data.email} with a link to reset your password!` : ''),
+  validationSchema: resetPassValidationSchema,
+  resolver: yupResolver(resetPassValidationSchema),
 };
 
-export const newPassPageData: IPageData = {
+export const newPasswordFormData: IFormData<NewPasswordFormFieldsType> = {
   title: 'New password',
   inputsData: [
     {
@@ -121,4 +117,10 @@ export const newPassPageData: IPageData = {
     },
   ],
   button: 'Set password',
+  defaultValues: {
+    password: '',
+    passwordConfirmation: '',
+  },
+  validationSchema: newPassValidationSchema,
+  resolver: yupResolver(newPassValidationSchema),
 };
