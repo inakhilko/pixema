@@ -1,0 +1,31 @@
+.rating {
+    position: absolute;
+    top: 20px;
+    left: 27px;
+    padding: 2px 8px 2px 8px;
+    border-radius: 6px;
+
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.high-rating {
+    background-color: #00A340;
+}
+
+.average-rating {
+    background-color: #F3A608;
+}
+
+.low-rating {
+    background-color: #F45D2D;
+}
+
+.trending-rating {
+    background-color: #7B61FF;
+}

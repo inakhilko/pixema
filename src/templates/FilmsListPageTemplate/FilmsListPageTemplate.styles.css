@@ -21,3 +21,9 @@
   grid-template-rows: repeat(auto-fill);
   gap: 40px;
 }
+
+@media (max-width: 1440px) {
+  .all-films {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

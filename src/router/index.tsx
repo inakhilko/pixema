@@ -9,8 +9,10 @@ import ResetPasswordPage from '../pages/ResetPasswordPage';
 import UserActivationPage from '../pages/UserActivationPage';
 import RegistrationConfirmationPage from '../pages/RegistrationConfimationPage';
 import NewPasswordPage from '../pages/NewPasswordPage';
-import AllFilms from '../pages/AllFilms';
 import PrivateRoute from './PrivateRoute';
+import HomePage from '../pages/HomePage';
+import TrendsPage from '../pages/TrendsPage';
+import OneFilmPage from '../pages/OneFilmPage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,8 +27,16 @@ const router = createBrowserRouter(
 
       <Route element={<RegistrationConfirmationPage />} path="confirmation" />
       <Route element={<UserActivationPage />} path="activate/:uid/:token" />
-      <Route element={<PrivateRoute Component={AllFilms} />} path="all" />
-
+      <Route element={<PrivateRoute />}>
+        <Route element={<HomePage />} path="all" />
+      </Route>
+      <Route element={<PrivateRoute />}>
+        <Route element={<TrendsPage />} path="trends" />
+      </Route>
+      <Route element={<PrivateRoute />}>
+        <Route element={<OneFilmPage />} path="film/:id" />
+      </Route>
+      {/* <Route element={<PrivateRoute Component={FilmsListPageTemplate} />} path="film/:id" /> */}
     </Route>,
   ),
 );

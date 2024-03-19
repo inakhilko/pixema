@@ -49,7 +49,7 @@ function Form<T extends FieldValues>({
         ))}
       </div>
 
-      <Button buttonText={button} type="submit" additionalClass="submit-btn" />
+      <Button type="submit" additionalClass="submit-btn">{button}</Button>
       {linkInfo && (
         <p className="form__helper">
           {linkInfo.helpingQuestion}

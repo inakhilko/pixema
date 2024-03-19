@@ -1,5 +1,46 @@
 .navigation {
   width: 266px;
+}
+
+.navigation__list {
+  width: 100%;
   display: flex;
   flex-direction: column;
+  list-style-type: none;
 }
+
+.navigation__item {
+  margin-bottom: 40px;
+
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.navigation__item:last-child {
+  margin-bottom: 0;
+}
+
+.navigation__item path {
+  fill: #80858b;
+}
+
+.navigation__item:hover path {
+  fill: #7b61ff;
+}
+
+.navigation__link {
+  color: #80858b;
+  text-decoration: none;
+}
+
+.navigation__item:hover .navigation__link {
+  color: #7b61ff;
+}
+
+
+
+

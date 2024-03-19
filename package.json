@@ -14,6 +14,7 @@
     "@hookform/resolvers": "^3.3.4",
     "@reduxjs/toolkit": "^2.2.1",
     "axios": "^1.6.7",
+    "clsx": "^2.1.0",
     "eslint-config-airbnb-typescript": "^17.1.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",

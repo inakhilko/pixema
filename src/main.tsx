@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './pages/AllFilms';
+import './templates/FilmsListPageTemplate';
 import App from './App';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
