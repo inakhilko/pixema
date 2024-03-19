@@ -5,10 +5,10 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../redux';
 import Navigation from '../../components/Navigation';
-import getFilms from '../../redux/thunks/films/getFilms.ts';
+import getFilms from '../../redux/thunks/films/getFilms';
 import FilmCard from '../../components/FilmCard';
 import getGenres from '../../redux/thunks/films/getGenres';
-import getMoreFilms from '../../redux/thunks/films/getMoreFilms.ts';
+import getMoreFilms from '../../redux/thunks/films/getMoreFilms';
 
 function FilmsListPageTemplate({ path }: { path: string }) {
   const [page, setPage] = useState(2);

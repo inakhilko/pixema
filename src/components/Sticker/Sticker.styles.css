@@ -1,7 +1,4 @@
-.rating {
-    position: absolute;
-    top: 20px;
-    left: 27px;
+.sticker {
     padding: 2px 8px 2px 8px;
     border-radius: 6px;
 
@@ -12,6 +9,14 @@
     color: #fff;
     font-size: 16px;
     font-weight: 600;
+    background-color: #323537;
+}
+
+.rating {
+    position: absolute;
+    top: 20px;
+    left: 27px;
+
 }
 
 .high-rating {

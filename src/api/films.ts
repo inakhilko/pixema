@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FILMS_PATHS } from '../types';
+import { FilmsPaths } from '../types';
 
 export interface IFilm {
   title: string,
@@ -56,11 +56,37 @@ class FilmsServiceApi {
     }
   }
 
-  public static async getFilm(id: number) {
+  public static async getFilm(id: string) {
     try {
-      const result = await axios.get(`${this.urls.baseMoviesUrl + FILMS_PATHS.ONE_FILM + id}`, {
+      const result = await axios.get(`${this.urls.baseMoviesUrl + FilmsPaths.ONE_FILM + id}`, {
         params: {
-          apikey: 'f9df37ea',
+          api_key: this.apiKey,
+        },
+      });
+      return result.data;
+    } catch (e) {
+      return {};
+    }
+  }
+
+  public static async getRecommendations(id: string) {
+    try {
+      const result = await axios.get(`${this.urls.baseMoviesUrl + FilmsPaths.ONE_FILM + id + FilmsPaths.RECOMMENDATIONS}`, {
+        params: {
+          api_key: this.apiKey,
+        },
+      });
+      return result.data.results;
+    } catch (e) {
+      return [];
+    }
+  }
+
+  public static async getCast(id: string) {
+    try {
+      const result = await axios.get(`${this.urls.baseMoviesUrl + FilmsPaths.ONE_FILM + id + FilmsPaths.CAST}`, {
+        params: {
+          api_key: this.apiKey,
         },
       });
       return result.data;

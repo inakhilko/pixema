@@ -1,8 +1,8 @@
 import FilmsListPageTemplate from '../../templates/FilmsListPageTemplate';
-import { FILMS_PATHS } from '../../types';
+import { FilmsPaths } from '../../types';
 
 function HomePage() {
-  return <FilmsListPageTemplate path={FILMS_PATHS.ALL} />;
+  return <FilmsListPageTemplate path={FilmsPaths.ALL} />;
 }
 
 export default HomePage;

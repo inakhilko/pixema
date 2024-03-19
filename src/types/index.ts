@@ -9,8 +9,10 @@ export type LoginCredentialsType = {
   password: string;
 };
 
-export enum FILMS_PATHS {
+export enum FilmsPaths {
   ALL = '3/trending/movie/week',
   TRENDING = '3/trending/movie/day',
   ONE_FILM = '3/movie/',
+  RECOMMENDATIONS = '/recommendations',
+  CAST = '3/credit/',
 }

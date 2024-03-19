@@ -1,8 +1,8 @@
 import FilmsListPageTemplate from '../../templates/FilmsListPageTemplate';
-import { FILMS_PATHS } from '../../types';
+import { FilmsPaths } from '../../types';
 
 function TrendsPage() {
-  return <FilmsListPageTemplate path={FILMS_PATHS.TRENDING} />;
+  return <FilmsListPageTemplate path={FilmsPaths.TRENDING} />;
 }
 
 export default TrendsPage;

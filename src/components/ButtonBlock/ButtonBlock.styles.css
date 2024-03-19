@@ -1,0 +1,12 @@
+.button-block {
+    width: 100%;
+    display: flex;
+}
+
+.button svg path {
+    fill: #AFB2B6;
+}
+
+.button {
+    flex: 1;
+}
