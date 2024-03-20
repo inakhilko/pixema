@@ -3,14 +3,15 @@ import { Provider } from 'react-redux';
 import { RouterProvider } from 'react-router-dom';
 import { store } from './redux';
 import router from './router';
+import ThemeProvider from './context/theme';
 
 function App() {
-  console.log('delete me');
-
   return (
     <div>
       <Provider store={store}>
-        <RouterProvider router={router} />
+        <ThemeProvider>
+          <RouterProvider router={router} />
+        </ThemeProvider>
       </Provider>
     </div>
   );

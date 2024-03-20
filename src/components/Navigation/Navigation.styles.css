@@ -1,5 +1,8 @@
 .navigation {
   width: 266px;
+  position: sticky;
+  left: 0;
+  top: 56px;
 }
 
 .navigation__list {

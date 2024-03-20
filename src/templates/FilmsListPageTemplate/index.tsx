@@ -10,14 +10,15 @@ import getFilms from '../../redux/thunks/films/getFilms';
 import FilmCard from '../../components/FilmCard';
 import getGenres from '../../redux/thunks/films/getGenres';
 import getMoreFilms from '../../redux/thunks/films/getMoreFilms';
+import { FilmsPaths } from '../../types';
 
-function FilmsListPageTemplate({ path }: { path: string }) {
+function FilmsListPageTemplate({ path }: { path: FilmsPaths }) {
   const [page, setPage] = useState(2);
   const dispatch = useDispatch<AppDispatch>();
 
   const lastItem = createRef<HTMLDivElement>();
   const observerLoader = useRef<IntersectionObserver | null>(null);
-
+  const filters = useSelector<RootState>((state) => state.filtersStore.filtrationData);
   const [searchParams] = useSearchParams();
   const searchText = searchParams.get('text') || undefined;
   const actionInSight = (entries: IntersectionObserverEntry[]) => {
@@ -35,13 +36,14 @@ function FilmsListPageTemplate({ path }: { path: string }) {
   const filmsList = useSelector((state: RootState) => state.filmsStore.films);
 
   useEffect(() => {
+    console.log('render');
     dispatch(
       getFilms({
         path,
         searchQuery: searchText,
       }),
     );
-  }, [dispatch, searchText]);
+  }, [dispatch, searchText, filters]);
 
   useEffect(() => {
     dispatch(getGenres());

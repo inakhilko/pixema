@@ -35,7 +35,7 @@ function Form<T extends FieldValues>({
         {inputsData.map(({
           label, inputName, placeholder, inputHelper,
         }) => (
-          <Input<T>
+          <Input
             label={label}
             placeholder={placeholder}
             key={inputName}

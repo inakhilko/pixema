@@ -2,6 +2,7 @@
   width: 100%;
   padding: 40px 10px;
   position: fixed;
+  z-index: 3;
   top: 0;
   left: 0;
   box-sizing: border-box;
@@ -39,10 +40,6 @@
 }
 
 .filter-button {
-  position: absolute;
-  right: 16px;
-  top: 16px;
-
   border: none;
   background-color: transparent;
   cursor: pointer;
@@ -50,4 +47,10 @@
 
 .header--authorized {
   background-color: #000;
+}
+
+.filtration {
+  position: absolute;
+  right: 16px;
+  top: 16px;
 }

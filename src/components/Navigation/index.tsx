@@ -1,13 +1,8 @@
 import './Navigation.styles.css';
 import { Link } from 'react-router-dom';
 import { navigationList } from '../../constants/navigationList';
-import FilmsServiceApi from '../../api/films';
 
 function Navigation() {
-  const onClick = async () => {
-    const res = await FilmsServiceApi.getFilms();
-    console.log(res);
-  };
   return (
     <nav className="navigation">
       <ul>
@@ -18,7 +13,6 @@ function Navigation() {
           </li>
         ))}
       </ul>
-      <button type="button" onClick={onClick}>films</button>
     </nav>
   );
 }

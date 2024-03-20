@@ -2,10 +2,12 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import listenerMiddleware from './middleware';
 import filmsReducer from './slices/Films';
 import userReducer from './slices/User';
+import filtersReducer from './slices/Filters';
 
 const rootReducer = combineReducers({
   filmsStore: filmsReducer,
   userStore: userReducer,
+  filtersStore: filtersReducer,
 });
 export const store = configureStore({
   reducer: rootReducer,

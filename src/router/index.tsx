@@ -14,6 +14,8 @@ import HomePage from '../pages/HomePage';
 import TrendsPage from '../pages/TrendsPage';
 import OneFilmPage from '../pages/OneFilmPage';
 import SearchResultsPage from '../pages/SearchResultsPage';
+import FilteredPage from '../pages/FilteredPage';
+import SettingsPage from '../pages/SettingsPage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -39,6 +41,12 @@ const router = createBrowserRouter(
       </Route>
       <Route element={<PrivateRoute />}>
         <Route element={<SearchResultsPage />} path="search" />
+      </Route>
+      <Route element={<PrivateRoute />}>
+        <Route element={<FilteredPage />} path="filters" />
+      </Route>
+      <Route element={<PrivateRoute />}>
+        <Route element={<SettingsPage />} path="settings" />
       </Route>
     </Route>,
   ),

@@ -1,9 +1,24 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import FilmsServiceApi from '../../../api/films';
+import FilmsServiceApi, { IFilm } from '../../../api/films';
+import { FilmsPaths } from '../../../types';
+import { RootState } from '../../index';
 
-const getFilms = createAsyncThunk(
+const getFilms = createAsyncThunk<IFilm[], { path: string; searchQuery?: string }, { state:RootState }>(
   'films/getFilms',
-  async ({ path, searchQuery }: { path: string; searchQuery?: string }) => FilmsServiceApi.getFilms({ path, searchQuery }),
+  async ({ path, searchQuery }, { getState }) => {
+    let filters = {};
+
+    if (path === FilmsPaths.FILTER_AND_SORT) {
+      const store:RootState = getState();
+      filters = store.filtersStore.filtrationData;
+    }
+
+    return FilmsServiceApi.getFilms({
+      path,
+      searchQuery,
+      filtersData: filters,
+    });
+  },
 );
 
 export default getFilms;

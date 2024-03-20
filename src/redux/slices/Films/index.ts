@@ -5,10 +5,17 @@ import getGenres from '../../thunks/films/getGenres';
 import getMoreFilms from '../../thunks/films/getMoreFilms';
 import getCurrentFilm from '../../thunks/films/getCurrentFilm';
 import getRecommendations from '../../thunks/films/getRecommendations';
+import getCountries from '../../thunks/films/getCountries.ts';
 
 export interface IGenre {
   id: number,
   name: string
+}
+
+export interface ICountry {
+  iso_3166_1: string,
+  english_name: string,
+  native_name: string
 }
 
 export interface ICurrentFilm {
@@ -44,6 +51,7 @@ export interface ICurrentFilm {
 type FilmsStoreType = {
   films: IFilm[];
   genres: IGenre[];
+  countries: ICountry[];
   currentFilm: ICurrentFilm;
   recommendations: IFilm[];
 };
@@ -51,6 +59,7 @@ type FilmsStoreType = {
 const initialState: FilmsStoreType = {
   films: [],
   genres: [],
+  countries: [],
   currentFilm: {},
   recommendations: [],
 };
@@ -79,6 +88,13 @@ const filmsSlice = createSlice({
       (state, action: PayloadAction<IGenre[]>) => ({
         ...state,
         genres: action.payload,
+      }),
+    )
+    .addCase(
+      getCountries.fulfilled,
+      (state, action: PayloadAction<ICountry[]>) => ({
+        ...state,
+        countries: action.payload,
       }),
     )
     .addCase(

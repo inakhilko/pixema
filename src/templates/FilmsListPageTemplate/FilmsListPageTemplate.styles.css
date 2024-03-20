@@ -5,7 +5,7 @@
 }
 
 .container__all-films {
-  padding: 134px 0;
+  position: relative;
 
   display: flex;
   flex: 1;

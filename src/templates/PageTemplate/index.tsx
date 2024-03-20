@@ -19,6 +19,7 @@ function PageTemplate() {
   }
 
   return (
+
     <div className={`page-template ${isAuthorized ? 'page-template--authorized' : 'page-template--unauthorized'}`}>
       <Header />
       <div className="page-template__content">

@@ -42,7 +42,7 @@ export const navigationList: INavigationListItem[] = [
       </svg>),
   }, {
     linkName: 'Favorites',
-    path: 'favorite',
+    path: '../favorite',
     icon: (
       <svg
         width="24"
@@ -58,7 +58,7 @@ export const navigationList: INavigationListItem[] = [
       </svg>),
   }, {
     linkName: 'Settings',
-    path: 'settings',
+    path: '../settings',
     icon: (
       <svg
         width="24"
