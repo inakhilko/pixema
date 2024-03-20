@@ -13,6 +13,7 @@ import PrivateRoute from './PrivateRoute';
 import HomePage from '../pages/HomePage';
 import TrendsPage from '../pages/TrendsPage';
 import OneFilmPage from '../pages/OneFilmPage';
+import SearchResultsPage from '../pages/SearchResultsPage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -36,7 +37,9 @@ const router = createBrowserRouter(
       <Route element={<PrivateRoute />}>
         <Route element={<OneFilmPage />} path="film/:id" />
       </Route>
-      {/* <Route element={<PrivateRoute Component={FilmsListPageTemplate} />} path="film/:id" /> */}
+      <Route element={<PrivateRoute />}>
+        <Route element={<SearchResultsPage />} path="search" />
+      </Route>
     </Route>,
   ),
 );

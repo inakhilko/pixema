@@ -7,12 +7,14 @@ const getMoreFilms = createAsyncThunk(
     path,
     page,
     onSuccess,
+    searchQuery,
   }: {
     path: string;
     page: number;
+    searchQuery?:string;
     onSuccess?: () => void;
   }) => {
-    const films = await FilmsServiceApi.getMoreFilms(path, page);
+    const films = await FilmsServiceApi.getMoreFilms(path, page, searchQuery);
     onSuccess?.();
     return films;
   },

@@ -1,12 +1,29 @@
 .button-block {
-    width: 100%;
-    display: flex;
+  width: 100%;
+  display: flex;
 }
 
-.button svg path {
-    fill: #AFB2B6;
+.button svg path,
+.button svg circle {
+  fill: #afb2b6;
+  stroke: #afb2b6;
 }
 
-.button {
-    flex: 1;
+.button:hover svg path,
+.button:hover svg circle {
+  fill: #fff;
+  stroke: #fff;
+}
+
+.pair-button {
+  flex: 1;
+}
+
+.pair-button:first-child {
+  border-right: 1px solid #000;
+  border-radius: 10px 0 0 10px;
+}
+
+.pair-button:last-child {
+  border-radius: 0 10px 10px 0;
 }

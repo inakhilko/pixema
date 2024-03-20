@@ -3,6 +3,7 @@ import {
   createRef, useEffect, useRef, useState,
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
 import { AppDispatch, RootState } from '../../redux';
 import Navigation from '../../components/Navigation';
 import getFilms from '../../redux/thunks/films/getFilms';
@@ -13,8 +14,12 @@ import getMoreFilms from '../../redux/thunks/films/getMoreFilms';
 function FilmsListPageTemplate({ path }: { path: string }) {
   const [page, setPage] = useState(2);
   const dispatch = useDispatch<AppDispatch>();
+
   const lastItem = createRef<HTMLDivElement>();
   const observerLoader = useRef<IntersectionObserver | null>(null);
+
+  const [searchParams] = useSearchParams();
+  const searchText = searchParams.get('text') || undefined;
   const actionInSight = (entries: IntersectionObserverEntry[]) => {
     if (entries[0].isIntersecting && page <= 500) {
       setPage((prevState) => prevState + 1);
@@ -22,15 +27,23 @@ function FilmsListPageTemplate({ path }: { path: string }) {
         getMoreFilms({
           path,
           page,
+          searchQuery: searchText,
         }),
       );
     }
   };
-
   const filmsList = useSelector((state: RootState) => state.filmsStore.films);
 
   useEffect(() => {
-    dispatch(getFilms(path));
+    dispatch(
+      getFilms({
+        path,
+        searchQuery: searchText,
+      }),
+    );
+  }, [dispatch, searchText]);
+
+  useEffect(() => {
     dispatch(getGenres());
   }, [dispatch]);
 
@@ -41,8 +54,9 @@ function FilmsListPageTemplate({ path }: { path: string }) {
     observerLoader.current = new IntersectionObserver(actionInSight);
 
     setTimeout(() => {
-      // eslint-disable-next-line max-len
-      if (observerLoader.current && lastItem.current) observerLoader.current.observe(lastItem.current);
+      if (observerLoader.current && lastItem.current) {
+        observerLoader.current.observe(lastItem.current);
+      }
     }, 500);
   }, [lastItem]);
 

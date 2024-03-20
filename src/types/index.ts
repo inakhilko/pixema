@@ -15,4 +15,5 @@ export enum FilmsPaths {
   ONE_FILM = '3/movie/',
   RECOMMENDATIONS = '/recommendations',
   CAST = '3/credit/',
+  SEARCH = '3/search/movie',
 }

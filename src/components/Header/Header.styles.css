@@ -12,7 +12,13 @@
   gap: 40px;
 }
 
+.search__wrapper {
+  position: relative;
+  flex: 1;
+}
+
 .search {
+  width: 100%;
   padding: 16px 20px;
   border: none;
   border-radius: 10px;
@@ -30,6 +36,16 @@
   color: rgb(128, 133, 139);
   font-size: 16px;
   font-weight: 500;
+}
+
+.filter-button {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .header--authorized {
