@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { useFormContext } from 'react-hook-form';
 import Button from '../Button';
 import './ButtonBlock.styles.css';
+import { IButtonBlock } from '../../constants/buttonsData.tsx';
 
 export type ButtonBlockDataType = {
   content: ReactNode;
@@ -10,7 +11,7 @@ export type ButtonBlockDataType = {
   id: number
 };
 type ButtonBlockPropsType = {
-  buttonBlockData: ButtonBlockDataType[];
+  buttonBlockData: IButtonBlock[];
   name: string;
 };
 function ButtonBlock({ buttonBlockData, name }: ButtonBlockPropsType) {

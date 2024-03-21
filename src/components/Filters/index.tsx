@@ -123,16 +123,14 @@ function Filters() {
             <div className="filters__buttons">
               {filterButtons.map(({
                 content,
-                onClick,
                 additionalClass,
                 type,
                 id,
               }) => (
                 <Button
                   additionalClass={`${clsx('filters-button', additionalClass && additionalClass)}`}
-                  type={type}
                   key={id}
-                  onClick={onClick}
+                  type={type}
                 >
                   {content}
                 </Button>

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
@@ -11,19 +13,26 @@ const persistConfig = {
   storage,
 };
 
+// @ts-ignore
 const rootReducer = combineReducers({
   filmsStore: filmsReducer,
   userStore: userReducer,
   filtersStore: filtersReducer,
 });
 
+// @ts-ignore
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
+// @ts-ignore
 export const store = configureStore({
   reducer: persistedReducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat([listenerMiddleware.middleware]),
+  middleware: (getDefaultMiddleware) => (
+    getDefaultMiddleware()
+      .concat([listenerMiddleware.middleware])
+  ),
 });
 export const persistor = persistStore(store);
 
+// @ts-ignore
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

@@ -22,7 +22,7 @@ function Sticker({ rating, imdbRating, runtime }: StickerProps) {
     return 'low-rating';
   };
   return (
-    <p className={clsx('sticker', rating >= 0 && 'rating', rating && checkRating(rating))}>
+    <p className={clsx('sticker', rating && rating >= 0 && 'rating', rating && checkRating(rating))}>
       {pathname.includes('trends') && (
       <svg
         width="24"

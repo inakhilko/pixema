@@ -31,18 +31,33 @@ function OneFilmPage() {
   );
 
   const releaseYear = release_date?.split('-')[0];
-  const releaseDayAndMonth = new Date(release_date).toDateString().split(' ').slice(1, 3);
+  const releaseDayAndMonth = release_date ? new Date(release_date).toDateString().split(' ').slice(1, 3) : [];
   const newReleasedDate = releaseDayAndMonth.reverse().join(' ') + releaseYear;
   const boxOffice = `$${revenue}`;
   const countries = production_countries?.map(({ name }) => name).join(', ');
   const companies = production_companies?.map(({ name }) => name).join(', ');
 
   const formFilmsFieldsData = [
-    releaseYear,
-    newReleasedDate,
-    boxOffice,
-    countries,
-    companies,
+    {
+      name: 'releaseYear',
+      value: releaseYear,
+    },
+    {
+      name: 'newReleasedDate',
+      value: newReleasedDate,
+    },
+    {
+      name: 'boxOffice',
+      value: boxOffice,
+    },
+    {
+      name: 'countries',
+      value: countries,
+    },
+    {
+      name: 'companies',
+      value: companies,
+    },
   ];
 
   useEffect(() => {
@@ -89,9 +104,9 @@ function OneFilmPage() {
                 {field}
               </p>
             ))}
-            {formFilmsFieldsData.map((content, index) => (
-              <p className="short-info__content" key={index}>
-                {content}
+            {formFilmsFieldsData.map(({ value, name }) => (
+              <p className="short-info__content" key={name}>
+                {value}
                 {' '}
               </p>
             ))}

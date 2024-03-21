@@ -38,7 +38,7 @@ class FilmsServiceApi {
     path: string;
     searchQuery?: string;
     filtersData: FiltersFormType;
-  }) {
+  }):Promise<IFilm[]> {
     try {
       FilmsServiceApi.getFilmsController.abort();
       FilmsServiceApi.getFilmsController = new AbortController();
@@ -84,7 +84,7 @@ class FilmsServiceApi {
     page: number;
     searchQuery?: string;
     filtersData: FiltersFormType;
-  }) {
+  }):Promise<IFilm[]> {
     try {
       const {
         ratingFrom,

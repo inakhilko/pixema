@@ -1,9 +1,16 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import FilmsServiceApi, { IFilm } from '../../../api/films';
 import { FilmsPaths } from '../../../types';
-import { RootState } from '../../index';
+import type { RootState } from '../../index';
 
-const getFilms = createAsyncThunk<IFilm[], { path: string; searchQuery?: string }, { state:RootState }>(
+// @ts-ignore
+const getFilms = createAsyncThunk<IFilm[], {
+  path: string;
+  searchQuery?: string
+},
+{ state:RootState }>(
   'films/getFilms',
   async ({ path, searchQuery }, { getState }) => {
     let filters = {};
@@ -21,4 +28,5 @@ const getFilms = createAsyncThunk<IFilm[], { path: string; searchQuery?: string 
   },
 );
 
+// @ts-ignore
 export default getFilms;

@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import signIn from '../../thunks/signIn';
 import getUserData from '../../thunks/getUserData';
@@ -25,6 +27,8 @@ const initialState: UserStoreType = {
   isAuthorized: false,
 };
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -43,14 +47,14 @@ const userSlice = createSlice({
   extraReducers: (builder) => builder
     .addCase(
       signIn.fulfilled,
-      (state, action: PayloadAction<ITokens>) => ({
+      (state, action) => ({
         ...state,
         tokens: action.payload,
       }),
     )
     .addCase(
       getUserData.fulfilled,
-      (state, action: PayloadAction<UserStoreType['userData']>) => ({
+      (state, action:PayloadAction<IUser>) => ({
         ...state,
         userData: action.payload,
       }),

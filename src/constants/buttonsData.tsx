@@ -78,16 +78,14 @@ export const filtersButtonBlockData:IButtonBlock[] = [
   },
 ];
 
-export const filterButtons = [
+export const filterButtons: { content: string, type:'button' | 'submit' | 'reset', id:number, additionalClass?:string }[] = [
   {
     content: 'Clear filter',
-    onClick: () => console.log('clicked'),
     type: 'button',
     id: 1,
   },
   {
     content: 'Show results',
-    onClick: () => console.log('clicked'),
     additionalClass: 'submit-btn',
     type: 'submit',
     id: 2,

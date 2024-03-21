@@ -1,13 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import UserServiceApi from '../../api/user';
+import type { IUser } from '../../types';
 
-const getUserData = createAsyncThunk(
+const getUserData = createAsyncThunk<IUser | null>(
   'user/getUserData',
-  async () => {
-    const user = await UserServiceApi.getUser();
-
-    return user;
-  },
+  async () => UserServiceApi.getUser(),
 );
 
 export default getUserData;

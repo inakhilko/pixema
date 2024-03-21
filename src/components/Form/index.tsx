@@ -23,6 +23,7 @@ function Form<T extends FieldValues>({
     handleSubmit,
     getValues,
     formState: { errors },
+    getFieldState,
   } = useForm({ defaultValues, resolver });
   const values = getValues();
   const message = staticMessage || getDynamicMessage?.(values, errors);
@@ -43,7 +44,7 @@ function Form<T extends FieldValues>({
             inputHelper={inputHelper}
             register={register}
             type={inputName === 'password' || inputName === 'passwordConfirmation' ? 'password' : ''}
-            errorMessage={errors[inputName]?.message}
+            errorMessage={getFieldState(inputName).error?.message}
           />
 
         ))}

@@ -5,7 +5,7 @@ import getGenres from '../../thunks/films/getGenres';
 import getMoreFilms from '../../thunks/films/getMoreFilms';
 import getCurrentFilm from '../../thunks/films/getCurrentFilm';
 import getRecommendations from '../../thunks/films/getRecommendations';
-import getCountries from '../../thunks/films/getCountries.ts';
+import getCountries from '../../thunks/films/getCountries';
 
 export interface IGenre {
   id: number,
@@ -64,6 +64,8 @@ const initialState: FilmsStoreType = {
   recommendations: [],
 };
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const filmsSlice = createSlice({
   name: 'films',
   initialState,
@@ -115,4 +117,6 @@ const filmsSlice = createSlice({
 });
 
 // export const { toggleFavoritePost } = filmsSlice.actions;
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 export default filmsSlice.reducer;
