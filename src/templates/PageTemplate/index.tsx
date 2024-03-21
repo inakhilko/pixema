@@ -10,7 +10,6 @@ function PageTemplate() {
   const { isAuthorized } = useUserStore();
 
   const { pathname } = useLocation();
-
   if (pathname === '/') {
     if (isAuthorized) {
       return <Navigate to="all" replace />;

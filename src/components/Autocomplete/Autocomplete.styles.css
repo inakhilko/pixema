@@ -1,15 +1,27 @@
 .autocomplete label {
-    color: white;
-    font-family: 'Exo 2';
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 24px;
+  color: white;
+  font-family: 'Exo 2';
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
 }
 
 .autocomplete .MuiInput-root {
-    padding: 16px 20px;
-    border: none;
-    border-radius: 10px;
-    color: #fff;
-    background: rgb(50, 53, 55);
+  padding: 16px 20px;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  background: rgb(50, 53, 55);
+}
+
+.css-wb57ya-MuiFormControl-root-MuiTextField-root, .MuiAutocomplete-popper {
+  transition: none  ;
+}
+
+label.MuiFormLabel-root {
+    transform: translate(0, -10px) scale(0.9);
+}
+
+label.MuiFormLabel-root.Mui-focused {
+  color: white;
 }

@@ -1,7 +1,8 @@
 import './App.css';
 import { Provider } from 'react-redux';
 import { RouterProvider } from 'react-router-dom';
-import { store } from './redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistor, store } from './redux';
 import router from './router';
 import ThemeProvider from './context/theme';
 
@@ -9,9 +10,11 @@ function App() {
   return (
     <div>
       <Provider store={store}>
-        <ThemeProvider>
-          <RouterProvider router={router} />
-        </ThemeProvider>
+        <PersistGate loading={null} persistor={persistor}>
+          <ThemeProvider>
+            <RouterProvider router={router} />
+          </ThemeProvider>
+        </PersistGate>
       </Provider>
     </div>
   );

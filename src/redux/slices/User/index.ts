@@ -1,18 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import signIn from '../../thunks/signIn';
 import getUserData from '../../thunks/getUserData';
-import { APP_STORAGE_KEYS } from '../../../api';
 
 export interface IUser {
   email?: string;
   username?: string;
   id?: number
 }
-
-export type LoginCredentialsType = {
-  email: string;
-  password: string;
-};
 
 export interface ITokens {
   refresh?: string;
@@ -45,16 +39,6 @@ const userSlice = createSlice({
       ...state,
       isAuthorized: true,
     }),
-    checkTokens: (state) => {
-      if (localStorage.getItem(APP_STORAGE_KEYS.TOKENS)) {
-        return {
-          ...state,
-          tokens: {
-            ...JSON.parse(localStorage.getItem(APP_STORAGE_KEYS.TOKENS)),
-          },
-        };
-      }
-    },
   },
   extraReducers: (builder) => builder
     .addCase(
@@ -73,5 +57,5 @@ const userSlice = createSlice({
     ),
 });
 
-export const { logout, authorize, checkTokens } = userSlice.actions;
+export const { logout, authorize } = userSlice.actions;
 export default userSlice.reducer;

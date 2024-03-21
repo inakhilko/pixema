@@ -1,0 +1,34 @@
+.burger {
+  width: 56px;
+  height: 56px;
+  border: none;
+  border-radius: 10px;
+  margin-right: 20px;
+  position: absolute;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #7b61ffff;
+  opacity: 0;
+  visibility: hidden;
+}
+
+@media (max-width: 1280px) {
+  .burger {
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@media (max-width: 768px) {
+  .burger {
+    position: absolute;
+    right: 0;
+    top: 32px;
+    opacity: 1;
+    visibility: visible;
+  }
+}

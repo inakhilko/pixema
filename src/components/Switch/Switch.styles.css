@@ -1,6 +1,7 @@
 .switch {
   position: relative;
-  display: inline-block;
+  display: flex;
+  justify-content: space-between;
   width: 32px;
   height: 20px;
 }

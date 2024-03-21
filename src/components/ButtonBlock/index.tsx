@@ -1,10 +1,10 @@
 import { ReactNode } from 'react';
+import clsx from 'clsx';
 import { useFormContext } from 'react-hook-form';
 import Button from '../Button';
 import './ButtonBlock.styles.css';
-import clsx from 'clsx';
 
-type ButtonBlockDataType = {
+export type ButtonBlockDataType = {
   content: ReactNode;
   value: number;
   id: number

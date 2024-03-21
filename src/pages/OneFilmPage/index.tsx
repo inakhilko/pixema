@@ -1,18 +1,17 @@
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Navigation from '../../components/Navigation';
 import { AppDispatch, RootState } from '../../redux';
 import getCurrentFilm from '../../redux/thunks/films/getCurrentFilm';
-import ButtonBlock from '../../components/ButtonBlock';
 import { ICurrentFilm } from '../../redux/slices/Films';
 import Sticker from '../../components/Sticker';
 import './OneFilmPage.styles.css';
 import RecommendationsSlider from '../../components/RecommendationsSlider';
-import { oneFilmButtons } from '../../constants/buttonsData';
 import { shortFilmInfoFields, titles } from '../../constants/titlesAndFields';
+import { useResize } from '../../hooks/useResize';
 
 function OneFilmPage() {
+  const { isScreenMd } = useResize();
   const { id } = useParams();
   const dispatch = useDispatch<AppDispatch>();
   const {
@@ -54,15 +53,16 @@ function OneFilmPage() {
   return (
     <div className="wrapper">
       <div className="container container__one-film">
-        <Navigation />
-        <div className="poster-block">
-          <img
-            className="poster"
-            src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-            alt="poster"
-          />
-          {/* <ButtonBlock buttonBlockData={oneFilmButtons} /> */}
-        </div>
+        {isScreenMd && (
+          <div className="poster-block">
+            <img
+              className="poster"
+              src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+              alt="poster"
+            />
+          </div>
+        )}
+
         <div className="info-block">
           <p className="genres">
             {genres && genres.map(({ name }) => name).join(' • ')}
@@ -73,6 +73,15 @@ function OneFilmPage() {
             <Sticker imdbRating={popularity} />
             <Sticker runtime={runtime} />
           </div>
+          {!isScreenMd && (
+            <div className="poster-block">
+              <img
+                className="poster"
+                src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+                alt="poster"
+              />
+            </div>
+          )}
           <p className="film__description">{overview}</p>
           <div className="short-info">
             {shortFilmInfoFields.map((field) => (

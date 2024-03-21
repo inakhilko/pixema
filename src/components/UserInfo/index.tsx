@@ -11,7 +11,7 @@ import { APP_STORAGE_KEYS } from '../../api';
 function UserInfo() {
   const { userData } = useUserStore();
 
-  const initials = userData.username?.split(' ').reduce((result, currentValue) => result + currentValue[0], '');
+  const initials = userData.username?.split(' ').reduce((result: string, currentValue: string) => result + currentValue[0], '');
 
   const dispatch = useDispatch<AppDispatch>();
   const onArrowClick = (event: React.MouseEvent<HTMLDivElement>) => {

@@ -1,22 +1,21 @@
 .swiper {
-    max-width: 1184px;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+  max-width: 1184px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 .swiper-slide {
-    max-width: 266px;
+  max-width: 266px;
 
-    /* Center slide text vertically */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

@@ -5,12 +5,12 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import { AppDispatch, RootState } from '../../redux';
-import Navigation from '../../components/Navigation';
 import getFilms from '../../redux/thunks/films/getFilms';
 import FilmCard from '../../components/FilmCard';
 import getGenres from '../../redux/thunks/films/getGenres';
 import getMoreFilms from '../../redux/thunks/films/getMoreFilms';
 import { FilmsPaths } from '../../types';
+import { IFilm } from '../../api/films';
 
 function FilmsListPageTemplate({ path }: { path: FilmsPaths }) {
   const [page, setPage] = useState(2);
@@ -65,13 +65,12 @@ function FilmsListPageTemplate({ path }: { path: FilmsPaths }) {
   return (
     <div className="wrapper">
       <div className="container container__all-films">
-        <Navigation />
         <div className="all-films">
           {filmsList.length !== 0
             && filmsList.map(
               ({
                 title, id, genre_ids, poster_path, vote_average,
-              }, index) => {
+              }: IFilm, index: number) => {
                 if (index + 1 === filmsList.length) {
                   return (
                     <FilmCard

@@ -3,6 +3,7 @@
   justify-content: flex-end;
 
   position: fixed;
+  z-index: 1;
   top: 0;
   left: 0;
   width: 100vw;
@@ -27,7 +28,7 @@
   border-radius: 10px 0 0 10px;
 
   background-color: #242426;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .filters__top-block {
@@ -73,14 +74,19 @@
 
 .filters__input {
   padding: 16px 20px;
+
+  flex: 1;
+
   border: none;
   border-radius: 10px;
+
   color: #fff;
-  background: rgb(50, 53, 55);
+
+  background: #323537ff;
 }
 
 .filters__input::placeholder {
-  color: #80858BFF;
+  color: #80858bff;
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
@@ -108,4 +114,34 @@
   font-weight: 500;
   line-height: 24px;
   background-color: #242426;
+}
+
+@media (max-width: 1024px) {
+  .filters__buttons {
+    padding-top: 55px;
+  }
+}
+
+@media (max-width: 768px) {
+  .filters {
+    max-width: unset;
+  }
+
+  .filters__title {
+    font-size: 20px;
+    line-height: 32px;
+  }
+
+  .filters__buttons {
+    padding-top: 40px;
+
+    flex-direction: column-reverse;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 520px) {
+  .filters__input-block {
+    flex-direction: column;
+  }
 }

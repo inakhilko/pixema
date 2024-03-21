@@ -1,6 +1,9 @@
 .setting__wrapper {
+    width: 100%;
+
     display: flex;
     flex-direction: column;
+    gap: 40px;
 }
 
 .settings__title {
@@ -12,9 +15,52 @@
     line-height: 36px;
 }
 
+.theme--light .settings__title {
+    color: #242426;
+}
+
 .settings {
+    padding: 40px;
+    width: 100%;
+
     display: flex;
+    gap: 40px;
 
     border-radius: 10px;
     background: #242426FF;
+}
+
+.settings__label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.settings__input {
+    margin-top: 8px;
+    padding: 16px 20px;
+
+    border: none;
+    border-radius: 10px;
+
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    background: #323537ff;
+}
+
+.settings__input::placeholder {
+    color: #80858bff;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.settings__input:focus {
+    outline: 2px solid #7b61ffff;
 }

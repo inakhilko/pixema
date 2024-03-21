@@ -1,9 +1,13 @@
 .user-info {
+  position: relative;
   max-width: 267px;
 
   display: flex;
   align-items: center;
   flex: 1;
+
+  opacity: 1;
+  visibility: visible;
 }
 
 .user-info__initials {
@@ -26,14 +30,23 @@
 .user-info__full-name {
   flex: 1;
 
-  color: rgb(255, 255, 255);
+  color: #fff;
   font-size: 16px;
   font-weight: 600;
+}
+
+.theme--light .user-info__full-name {
+  color: #242426;
 }
 
 .user-info__button {
   border: none;
   background-color: transparent;
+  cursor: pointer;
+}
+
+.user-info__button svg path {
+  fill: #afb2b6;
 }
 
 .user-menu--clicked .user-info__button {
@@ -80,4 +93,12 @@
 .user-menu--clicked .user-menu__list {
   opacity: 1;
   visibility: visible;
+}
+
+@media (max-width: 1280px) {
+  .user-info {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+  }
 }

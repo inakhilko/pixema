@@ -7,19 +7,25 @@
 }
 
 .film-poster {
-  max-width: 266px;
+  width: 100%;
   margin-bottom: 24px;
 
   border-radius: 20px;
+
+  object-fit: cover;
 }
 
 .title {
-  margin-bottom: 16px;
+  margin-bottom: 4px;
 
   color: #fff;
   font-size: 16px;
   font-weight: 700;
   line-height: 24px;
+}
+
+.theme--light .title {
+  color: #242426;
 }
 
 .title:hover {
@@ -32,4 +38,14 @@
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
+}
+
+.theme--light .genre {
+  color: #afb2b6;
+}
+
+@media (max-width: 768px) {
+  .film-poster {
+    margin-bottom: 20px;
+  }
 }

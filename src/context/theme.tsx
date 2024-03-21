@@ -17,7 +17,7 @@ type ThemeContextType = {
   toggleTheme: () => void;
 };
 const defaultThemeValue: ThemeContextType = {
-  theme: EThemes.LIGHT,
+  theme: EThemes.DARK,
   changeTheme: () => undefined,
   toggleTheme: () => undefined,
 };

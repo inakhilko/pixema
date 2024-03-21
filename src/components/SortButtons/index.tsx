@@ -1,11 +1,10 @@
-import ButtonBlock from '../ButtonBlock';
-import { IButtonBlock } from '../../constants/buttonsData';
+import ButtonBlock, { ButtonBlockDataType } from '../ButtonBlock';
 import './SortButtons.styles.css';
 
 type SortButtonsPropsType = {
   title: string,
   name:string,
-  buttonsInfo: IButtonBlock[]
+  buttonsInfo: ButtonBlockDataType[]
 };
 function SortButtons({ title, buttonsInfo, name }: SortButtonsPropsType) {
   return (

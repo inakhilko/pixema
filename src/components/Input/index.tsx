@@ -4,7 +4,7 @@ import './Input.styles.css';
 import { Link } from 'react-router-dom';
 import { Path, UseFormRegister } from 'react-hook-form';
 
-type InputPropsType<T extends object> = {
+export type InputPropsType<T extends object> = {
   label: string;
   inputHelper?: {
     helpingQuestion?: string,

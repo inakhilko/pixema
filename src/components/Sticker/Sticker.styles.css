@@ -1,36 +1,35 @@
 .sticker {
-    padding: 2px 8px 2px 8px;
-    border-radius: 6px;
+  padding: 2px 8px 2px 8px;
+  border-radius: 6px;
 
-    display: flex;
-    align-items: center;
-    gap: 7px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
 
-    color: #fff;
-    font-size: 16px;
-    font-weight: 600;
-    background-color: #323537;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #323537;
 }
 
 .rating {
-    position: absolute;
-    top: 20px;
-    left: 27px;
-
+  position: absolute;
+  top: 20px;
+  left: 27px;
 }
 
 .high-rating {
-    background-color: #00A340;
+  background-color: #00a340;
 }
 
 .average-rating {
-    background-color: #F3A608;
+  background-color: #f3a608;
 }
 
 .low-rating {
-    background-color: #F45D2D;
+  background-color: #f45d2d;
 }
 
 .trending-rating {
-    background-color: #7B61FF;
+  background-color: #7b61ff;
 }

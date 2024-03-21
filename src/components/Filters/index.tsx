@@ -1,8 +1,10 @@
 import clsx from 'clsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm, FormProvider } from 'react-hook-form';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useOnClickOutside } from 'usehooks-ts';
+
 import FilterAutocomplete from '../Autocomplete';
 import { AppDispatch, RootState } from '../../redux';
 import './Filters.styles.css';
@@ -16,24 +18,30 @@ import { filterButtons, filtersButtonBlockData } from '../../constants/buttonsDa
 import { FiltersFormType } from '../../api/films';
 
 function Filters() {
-  const { genres, countries } = useSelector((state: RootState) => state.filmsStore);
   const dispatch = useDispatch<AppDispatch>();
-  const { isOpen } = useSelector((state: RootState) => state.filtersStore);
   const navigate = useNavigate();
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  const { filmsStore: { genres, countries }, filtersStore: { isOpen } } = useSelector((state: RootState) => state);
+
   const formMethods = useForm({ defaultValues: initialFiltersState.filtrationData });
   const {
     register,
     handleSubmit,
   } = formMethods;
+
   const onSubmit = (data: FiltersFormType) => {
-    console.log(data);
     dispatch(setFiltrationData(data));
     dispatch(closeFilters());
     navigate('filters');
   };
+
   const onClosure = () => {
     dispatch(closeFilters());
   };
+
+  useOnClickOutside(ref, onClosure);
+
   useEffect(() => {
     dispatch(getCountries());
   }, []);
@@ -41,7 +49,7 @@ function Filters() {
     <div
       className={clsx('filters__wrapper', isOpen && 'filters__wrapper--open')}
     >
-      <div className="filters">
+      <div className="filters" ref={ref}>
         <div className="filters__top-block">
           <h3 className="filters__title">Filters</h3>
           <button className="filters__close" type="button" onClick={onClosure}>

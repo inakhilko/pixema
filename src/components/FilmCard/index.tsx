@@ -25,7 +25,7 @@ const FilmCard = forwardRef<HTMLDivElement, FilmCardPropsType>(({
         src={`https://image.tmdb.org/t/p/w500/${poster}`}
         alt="Film poster"
       />
-      <Sticker rating={rating} imdbRating={null} runtime={null} />
+      <Sticker rating={rating} />
       <p className="title" onClick={onTitleClick} role="presentation">{title}</p>
       <p className="genre">
         {genres && combineGenres(genres, allGenresList)}

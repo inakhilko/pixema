@@ -1,8 +1,9 @@
 .navigation {
+  padding: 16px 15px;
   width: 266px;
-  position: sticky;
+  position: absolute;
   left: 0;
-  top: 56px;
+  top: 126px;
 }
 
 .navigation__list {
@@ -44,6 +45,33 @@
   color: #7b61ff;
 }
 
+@media (max-width: 1280px) {
+  .navigation {
+    padding-left: 75px;
+    opacity: 0;
+    visibility: hidden;
+    left: unset;
+    right: 0;
+    transform: translateX(236px);
+    transition: 0.8s all ease-in-out;
+  }
 
+  .navigation--opened {
+    position: fixed;
+    height: 100vh;
+    background-color: #000;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+  }
 
+  .theme--light .navigation--opened {
+    background-color: #fff;
+  }
+}
 
+@media (max-width: 786px) {
+  .navigation {
+    top: 114px;
+  }
+}

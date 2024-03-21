@@ -1,14 +1,16 @@
 .page-template {
   width: 100%;
   min-height: 100vh;
-  padding-top: 136px;
 
   display: flex;
   flex-direction: column;
 }
 
 .page-template--unauthorized {
+  padding: 0 24px;
   background-image: url('../../assets/images/unauth-background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .page-template--authorized {
@@ -17,9 +19,19 @@
 }
 
 .page-template__content {
+  padding-top: 120px;
   flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .theme--light .page-template--authorized {
   background-color: #fff;
+}
+
+@media (max-width: 786px) {
+  .page-template__content {
+    padding-top: 196px;
+  }
 }

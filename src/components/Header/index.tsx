@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import clsx from 'clsx';
 import { useNavigate } from 'react-router-dom';
-import { ChangeEventHandler } from 'react';
+import { ChangeEventHandler, useState } from 'react';
 import UserInfo from '../UserInfo';
 import './Header.styles.css';
 import Logo from '../Logo';
@@ -10,11 +10,18 @@ import Filters from '../Filters';
 
 import { AppDispatch } from '../../redux';
 import { openFilters } from '../../redux/slices/Filters';
+import Burger from '../Burger';
+import Navigation from '../Navigation';
 
 function Header() {
+  const [isBurgerOpen, setIsBurgerOpen] = useState(false);
+  const onBurgerClick = () => {
+    setIsBurgerOpen((prevState) => !prevState);
+  };
   const { isAuthorized } = useUserStore();
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
+
   const onFilterButtonClick = () => {
     dispatch(openFilters());
   };
@@ -55,6 +62,8 @@ function Header() {
           </div>
 
           <UserInfo />
+          <Burger isBurgerOpen={isBurgerOpen} onBurgerClick={onBurgerClick} />
+          <Navigation isOpen={isBurgerOpen} />
         </>
       )}
     </header>

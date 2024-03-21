@@ -14,7 +14,6 @@ function Message({
 }: MessageProps) {
   const navigate = useNavigate();
   const onSubmit = () => {
-    console.log('njiomkpl');
     navigate('../signin');
   };
 
@@ -22,7 +21,7 @@ function Message({
     <div className="message__wrapper">
       <h2 className="message__title">{title}</h2>
       <p className="message__text">{message}</p>
-      <Button onClick={onSubmit} buttonText={button} />
+      <Button onClick={onSubmit}>{button}</Button>
     </div>
   );
 }
